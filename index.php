@@ -1004,9 +1004,9 @@
               <?php 
                 if($_GET['message']) {
                   if($_GET['message'] == "success") {
-                     echo = '<p>Your message snet</p>';
+                     echo '<p>Your message snet</p>';
                    }else if( $_GET['message'] == "failed" ){
-                      echo = '<p>Failed</p>';
+                      echo '<p>Failed</p>';
                    }
                 }
                
