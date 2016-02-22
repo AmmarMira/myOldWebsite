@@ -13,6 +13,7 @@
      // $email  = 'io.ammarr@gmail.com';
       $subject = 'Message my website';
 
+      $feedback = false;
 
       //$mail->SMTPDebug = 1;                                   // Enable verbose debug output
 
@@ -42,9 +43,11 @@
       if(!$mail->send()) {
           echo 'Message could not be sent.';
           echo 'Mailer Error: ' . $mail->ErrorInfo;
-          header( 'Location: http://www.ammarmira.com/#contact?message=sucess' ) ;
+          $feedback = '<p>Something went wrong, go back and try again!</p>';
+          header( 'Location: http://www.ammarmira.com/#contact' ) ;
       } else {
-          header( 'Location: http://www.ammarmira.com/#contact?message=failed' ) ;
+          $feedback = '<p>Your message has been sent!</p>';
+          header( 'Location: http://www.ammarmira.com/#contact' ) ;
       }
   }
 
@@ -1000,17 +1003,6 @@
               <?php if ( strlen($feedback)): ?>
                 <p id="feedback"><?php echo $feedback; ?></p>
               <?php endif ?>
-
-              <?php 
-                if($_GET['message']) {
-                  if($_GET['message'] == "success") {
-                     echo '<p>Your message snet</p>';
-                   }else if( $_GET['message'] == "failed" ){
-                      echo '<p>Failed</p>';
-                   }
-                }
-               
-              ?>
               
             </form>
           </div><!--/.footer-form -->
