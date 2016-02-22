@@ -955,7 +955,7 @@
 
         <div class="col-md-8 col-md-offset-2">
           <div class="footer-form">
-            <form role="form" action="index.php" method="post">
+            <form role="form" action="index.php/#contact" method="post">
               <div class="col-md-12 input-container wow animated fadeInUp" data-wow-delay="0.2s">
                 <input type="text" class="form-control" placeholder="Name" name="name" id="name">
               </div>
