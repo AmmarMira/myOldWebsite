@@ -1,25 +1,53 @@
 <?php
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message']; 
-    $to = 'io.ammarr@gmail.com'; 
-    $subject = 'Message my website';
 
-    $feedback = false;
+  if ($_POST['submit'] && strlen($email) > 4) {
+  
+      require 'vendor/autoload.php';
 
-    mail($to, $subject, "hello", "sadasd");
-      
-    $body = "From: $name\n E-Mail: $email\n Message:\n $message";
-        
-    if ($_POST['submit'] && strlen($email) > 4) {         
-      if (  mail($to, $subject, $body, $name) ) { 
-        $feedback = '<p>Your message has been sent!</p>';
-      } else { 
-        $feedback = '<p>Something went wrong, go back and try again!</p>'; 
-      } 
-    } else if ($_POST['submit'] && strlen($email) < 4) {
-      echo '<p>You answered the anti-spam question incorrectly!</p>';
-    }
+      $mail = new PHPMailer;
+
+      $name = $_POST['name'];
+      $email = $_POST['email'];
+      $message = $_POST['message'];
+      $to = 'io.ammarr@gmail.com';
+      $subject = 'Message my website';
+
+      $feedback = false;
+
+      //$mail->SMTPDebug = 1;                                   // Enable verbose debug output
+
+      $mail->isSMTP();                                          // Set mailer to use SMTP
+      $mail->Host = 'email-smtp.us-west-2.amazonaws.com';       // Specify main and backup SMTP servers
+      $mail->SMTPAuth = true;                                   // Enable SMTP authentication
+      $mail->Username = 'AKIAJMTHXRDIQOUGU2QA';                 // SMTP username
+      $mail->Password = 'AhZKdDEi+kCyaMxtZsB+pRs91mMGTbifRav3vbsXdMzw';                           // SMTP password
+      //$mail->SMTPSecure = 'tls';                              // Enable TLS encryption, `ssl` also accepted
+      $mail->Port = 587;                                        // TCP port to connect to
+
+      $mail->setFrom($email, $name);
+      $mail->addAddress('io.ammarr@gmail.com', 'Ammar Mira');     // Add a recipient
+      //$mail->addAddress('ellen@example.com');               // Name is optional
+      //$mail->addReplyTo('info@example.com', 'Information');
+      //$mail->addCC('cc@example.com');
+      //$mail->addBCC('bcc@example.com');
+
+      //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+      //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+      //$mail->isHTML(true);                                  // Set email format to HTML
+
+      $mail->Subject = 'Message my website';
+      $mail->Body    = "From: $name\n E-Mail: $email\n Message:\n $message";
+      $mail->AltBody = $message;
+
+      if(!$mail->send()) {
+          echo 'Message could not be sent.';
+          echo 'Mailer Error: ' . $mail->ErrorInfo;
+          $feedback = '<p>Something went wrong, go back and try again!</p>';
+      } else {
+          $feedback = '<p>Your message has been sent!</p>';
+      }
+  }
+
 ?>
 
 
@@ -955,7 +983,7 @@
 
         <div class="col-md-8 col-md-offset-2">
           <div class="footer-form">
-            <form role="form" action="index.php/#contact" method="post">
+            <form role="form" action="index.php" method="post">
               <div class="col-md-12 input-container wow animated fadeInUp" data-wow-delay="0.2s">
                 <input type="text" class="form-control" placeholder="Name" name="name" id="name">
               </div>
