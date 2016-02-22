@@ -1,3 +1,26 @@
+<?php
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message']; 
+    $to = 'io.ammarr@gmail.com'; 
+    $subject = 'Message my website';
+
+    $feedback = false;
+      
+    $body = "From: $name\n E-Mail: $email\n Message:\n $message";
+        
+    if ($_POST['submit'] && strlen($email) > 4) {         
+      if (  mail($to, $subject, $body, $name)) { 
+        $feedback = '<p>Your message has been sent!</p>';
+      } else { 
+        $feedback '<p>Something went wrong, go back and try again!</p>'; 
+      } 
+    } else if ($_POST['submit'] && strlen($email) < 4) {
+      echo '<p>You answered the anti-spam question incorrectly!</p>';
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -930,7 +953,7 @@
 
         <div class="col-md-8 col-md-offset-2">
           <div class="footer-form">
-            <form role="form" action="form.php" method="post">
+            <form role="form" action="index.php" method="post">
               <div class="col-md-12 input-container wow animated fadeInUp" data-wow-delay="0.2s">
                 <input type="text" class="form-control" placeholder="Name" name="name" id="name">
               </div>
@@ -941,9 +964,13 @@
                 <textarea class="form-control" placeholder="Your Message Here" name="message" id="message"></textarea>
               </div>
               <div class="col-md-12 button-container wow animated fadeInUp" data-wow-delay="0.2s">
-                <input type="submit" class="submit-btn def-btn" value="Send Message">
+                <input type="submit" name="submit" class="submit-btn def-btn" value="Send Message">
               </div>
-              <p id="feedback"><?php echo $feedback; ?></p>
+
+              <?php if ( strlen($feedback)): ?>
+                <p id="feedback"><?php echo $feedback; ?></p>
+              <?php endif ?>
+              
             </form>
           </div><!--/.footer-form -->
         </div>

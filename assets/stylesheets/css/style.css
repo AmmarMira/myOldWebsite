@@ -1694,6 +1694,12 @@ a:hover {
 .contact .footer-form .button-container .def-btn:hover {
   color: #ffffff;
 }
+
+p#feedback{
+  color: #93be4c;
+  font-size: 2em;
+  text-transform: uppercase;
+}
 /*==========================================*/
 /*       17 - Footer Elements
 /*==========================================*/
