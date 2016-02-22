@@ -63,6 +63,10 @@ body h5 {
 section {
   background: #ffffff;
 }
+.alert{
+    padding: 40px;
+}
+
 .bg-section {
   background: #f0f0f0;
 }

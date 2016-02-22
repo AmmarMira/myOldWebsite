@@ -43,11 +43,11 @@
       if(!$mail->send()) {
           echo 'Message could not be sent.';
           echo 'Mailer Error: ' . $mail->ErrorInfo;
+          $bootClass = 'alert-danger';
           $feedback = '<p>Something went wrong, go back and try again!</p>';
-          header( 'Location: http://www.ammarmira.com/#contact' ) ;
       } else {
           $feedback = '<p>Your message has been sent!</p>';
-          header( 'Location: http://www.ammarmira.com/#contact' ) ;
+          $bootClass = 'alert-success';
       }
   }
 
@@ -138,6 +138,11 @@
       <div class="banner-content">
         <div class="container">
           <div class="col-md-12">
+
+              <?php if ( strlen($feedback)): ?>
+                <div class="alert <?php echo $bootClass ?>" role="alert"> <?php echo $feedback?> </div>
+              <?php endif ?>
+
             <div class="subtitle">
               <p>I Am Ammar Mira</p>
             </div>
@@ -999,11 +1004,6 @@
               <div class="col-md-12 button-container wow animated fadeInUp" data-wow-delay="0.2s">
                 <input type="submit" name="submit" class="submit-btn def-btn" value="Send Message">
               </div>
-
-              <?php if ( strlen($feedback)): ?>
-                <p id="feedback"><?php echo $feedback; ?></p>
-              <?php endif ?>
-              
             </form>
           </div><!--/.footer-form -->
         </div>
