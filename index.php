@@ -13,7 +13,7 @@
       if (  mail($to, $subject, $body, $name)) { 
         $feedback = '<p>Your message has been sent!</p>';
       } else { 
-        $feedback '<p>Something went wrong, go back and try again!</p>'; 
+        $feedback = '<p>Something went wrong, go back and try again!</p>'; 
       } 
     } else if ($_POST['submit'] && strlen($email) < 4) {
       echo '<p>You answered the anti-spam question incorrectly!</p>';
