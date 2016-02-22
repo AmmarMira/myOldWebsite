@@ -1,15 +1,16 @@
 <?php
 
-  if ($_POST['submit'] && strlen($email) > 4) {
-  
       require 'vendor/autoload.php';
+  if ($_POST['submit']) {
+
+
 
       $mail = new PHPMailer;
 
       $name = $_POST['name'];
       $email = $_POST['email'];
       $message = $_POST['message'];
-      $to = 'io.ammarr@gmail.com';
+     // $email  = 'io.ammarr@gmail.com';
       $subject = 'Message my website';
 
       $feedback = false;
@@ -17,17 +18,17 @@
       //$mail->SMTPDebug = 1;                                   // Enable verbose debug output
 
       $mail->isSMTP();                                          // Set mailer to use SMTP
-      $mail->Host = 'email-smtp.us-west-2.amazonaws.com';       // Specify main and backup SMTP servers
+      $mail->Host = 'email-smtp.us-west-2.amazonaws.com'; // Specify main and backup SMTP servers
       $mail->SMTPAuth = true;                                   // Enable SMTP authentication
       $mail->Username = 'AKIAJMTHXRDIQOUGU2QA';                 // SMTP username
       $mail->Password = 'AhZKdDEi+kCyaMxtZsB+pRs91mMGTbifRav3vbsXdMzw';                           // SMTP password
       //$mail->SMTPSecure = 'tls';                              // Enable TLS encryption, `ssl` also accepted
       $mail->Port = 587;                                        // TCP port to connect to
 
-      $mail->setFrom($email, $name);
-      $mail->addAddress('io.ammarr@gmail.com', 'Ammar Mira');     // Add a recipient
+      $mail->setFrom("io.ammarr@gmail.com", $name);
+      $mail->addAddress("io.ammarr@gmail.com", 'Ammar Mira');     // Add a recipient
       //$mail->addAddress('ellen@example.com');               // Name is optional
-      //$mail->addReplyTo('info@example.com', 'Information');
+      $mail->addReplyTo($eamil, $name);
       //$mail->addCC('cc@example.com');
       //$mail->addBCC('bcc@example.com');
 
@@ -43,8 +44,10 @@
           echo 'Message could not be sent.';
           echo 'Mailer Error: ' . $mail->ErrorInfo;
           $feedback = '<p>Something went wrong, go back and try again!</p>';
+          header( 'Location: http://www.ammarmira.com/#contact' ) ;
       } else {
           $feedback = '<p>Your message has been sent!</p>';
+          header( 'Location: http://www.ammarmira.com/#contact' ) ;
       }
   }
 
