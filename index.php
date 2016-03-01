@@ -11,7 +11,7 @@
       $email = $_POST['email'];
       $message = $_POST['message'];
      // $email  = 'io.ammarr@gmail.com';
-      $subject = 'Message my website';
+      $subject = 'My Website';
 
       $feedback = false;
 
@@ -25,8 +25,8 @@
       //$mail->SMTPSecure = 'tls';                              // Enable TLS encryption, `ssl` also accepted
       $mail->Port = 587;                                        // TCP port to connect to
 
-      $mail->setFrom("io.ammarr@gmail.com", $name);
-      $mail->addAddress("io.ammarr@gmail.com", 'Ammar Mira');     // Add a recipient
+      $mail->setFrom("hello@ammarmira.com", $name);
+      $mail->addAddress("hello@ammarmira.com", 'Ammar Mira');     // Add a recipient
       //$mail->addAddress('ellen@example.com');               // Name is optional
       $mail->addReplyTo($eamil, $name);
       //$mail->addCC('cc@example.com');
@@ -43,11 +43,13 @@
       if(!$mail->send()) {
           echo 'Message could not be sent.';
           echo 'Mailer Error: ' . $mail->ErrorInfo;
+
+      } else if (($name=="")||($email=="")||($message=="")){
           $bootClass = 'alert-danger';
           $feedback = '<p>Something went wrong, go back and try again!</p>';
       } else {
           $feedback = '<p>Your message has been sent!</p>';
-          $bootClass = 'alert-success';
+          $bootClass = 'alert-success';        
       }
   }
 
@@ -1039,7 +1041,7 @@
                   <i class="fa fa-instagram"></i>
                 </div>
               </a>
-              <a target="_blank" href="https://www.youtube.com/channel/UCzsDj-xnb_lftYga7NOo0Jg">
+              <a target="_blank" href="https://www.youtube.com/AmmarMira">
                 <div class="circle">
                   <i class="fa fa-youtube"></i>
                 </div>
