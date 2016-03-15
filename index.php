@@ -268,7 +268,7 @@
         <div class="portfoliocontent">
 
               <div class="item col-md-4 col-sm-6 col-xs-12 webdesign">
-            <a target="_blank" href="http://ammarmira.com/WeatherWidget/app/">
+            <a target="_blank" href="http://ammarmira.com/weatherWidget/app/index.html">
               <div class="content">
                 <div class="overlay">
                   <div class="valign-container">
