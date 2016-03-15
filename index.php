@@ -267,6 +267,27 @@
       <div class="container">
         <div class="portfoliocontent">
 
+              <div class="item col-md-4 col-sm-6 col-xs-12 webdesign">
+            <a target="_blank" href="http://ammarmira.com/WeatherWidget/app/">
+              <div class="content">
+                <div class="overlay">
+                  <div class="valign-container">
+                    <div class="text valign-content">
+                      <span class="project-name">Weather Widget</span>
+                      <div class="separator-container">
+                        <div class="separator"><div class="shape"></div></div>
+                      </div>
+                      <span class="project-date">March 2016</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="assets/images/weather.jpg" alt="Portfolio image">
+                </div>
+              </div><!--/.content -->
+            </a>
+          </div><!--/.item -->         
+
             <div class="item col-md-4 col-sm-6 col-xs-12 webdesign">
             <a target="_blank" href="https://github.com/AmmarMira/WeddingPhotography">
               <div class="content">
